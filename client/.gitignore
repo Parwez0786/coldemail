@@ -1,0 +1,9 @@
+node_modules
+dist
+ui-review
+scripts/ui-screenshots.mjs
+.vite
+*.log
+.env
+.env.local
+.env.*.local

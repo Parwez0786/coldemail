@@ -1,0 +1,51 @@
+\newcommand{\experienceItemListStart}{\begin{itemize}}
+\newcommand{\experienceItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\experienceDeatils}[5]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{#1} \textbar\hspace{0.2em}\text{#2} & \text{#3} \\ 
+        \textbf{Tech Stack:} \text{#4} & \text{#5}\\
+    \end{tabular*}
+}
+\newcommand{\experienceDeatilsWithCert}[6]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{#1} \textbar\hspace{0.2em}\href{#6}{#2} & \text{#3} \\ 
+        \textbf{Tech Stack:} \text{#4} & \text{#5}\\
+    \end{tabular*}
+}
+
+%=================================
+% 
+%=================================
+\vspace{-5pt}
+\section{\large \textbf{WORK EXPERIENCE}}
+    \resumeSubHeadingListStart
+        \experienceDeatils
+        {Paytm Money}
+        {Software Engineer}
+        {06/2025 – Present}
+        {Java Spring Boot, Kafka, Redis, Rundeck, Kibana}
+        {Noida}
+        \vspace{-5pt}
+         \experienceItemListStart
+            \ProjectItem{Developed an API to fetch user mandates and segregate them by bank accounts, improving data organization and retrieval efficiency.}
+            \ProjectItem{Built an asynchronous process for sending Pre-Debit Notifications (PDN) and Debit Notifications (DN) for SIPs using Kafka, ensuring better scalability and reliability.}
+            \ProjectItem{Utilized Redis and Rundeck cron jobs to support analytics and tracking for PDN and DN events related to SIPs.}
+            \ProjectItem{Gained hands-on experience with Java Spring Boot, Kafka, Rundeck, and Kibana for backend development and monitoring.}
+        \experienceItemListEnd
+       \vspace{4.5pt}
+        \experienceDeatils
+        {Paytm Money}
+        {Software Engineer Intern}
+        {01/2025 – 06/2025}
+        {React.js, JavaScript, SCSS, REST APIs}
+        {Noida}
+        \vspace{-5pt}
+         \experienceItemListStart
+            \ProjectItem{Developed search feature using React.js, JavaScript, and SCSS with debounced search, autocomplete, real-time filtering, and category navigation via RESTful API integration to reduce fund discovery time.}
+            \ProjectItem{Built Discover module leveraging React Hooks, Context API, and custom hooks with reusable functional components, dynamic data visualization, and responsive CSS/SCSS for enhanced mobile experience.}
+            \ProjectItem{Optimized frontend performance using React.memo, lazy loading, code splitting with Webpack, and Context API state management, improving page load times and application responsiveness.}
+        \experienceItemListEnd
+       \vspace{3.5pt}
+    \resumeSubHeadingListEnd

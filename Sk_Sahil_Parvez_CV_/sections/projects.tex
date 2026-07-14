@@ -1,0 +1,49 @@
+\newcommand{\projectItemListStart}{\begin{itemize}}
+\newcommand{\projectItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\newcommand{\projectSubheading}[5]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} \textbar\hspace{0.2em} {\href{#2}{#3}} & \text{#4} \\
+      \textbf{Tech Stack: }\text{#5} \\
+    \end{tabular*}
+}
+\newcommand{\projectSubheadingLink}[6]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} \textbar\hspace{0.2em} {\href{#2}{#3}} \textbar\hspace{0.2em} {\href{#4}{Website}} & \text{#5} \\
+      \textbf{Tech Stack: }\text{#6} \\
+    \end{tabular*}
+}
+%=================================
+% 
+%=================================
+\section{\large \textbf{PROJECTS}}
+    \resumeSubHeadingListStart
+        \projectSubheading
+          {Patient Management System}
+          {https://github.com/Parwez0786}
+          {/Parwez0786}
+          {2024 – 2025}
+          {Java, Spring Boot, PostgreSQL, gRPC, Kafka, Redis, AWS, Docker}
+        \vspace{-5pt}
+        \projectItemListStart
+            \ProjectItem{Developed a microservices-based healthcare platform with Spring Boot REST APIs for patient CRUD, a gRPC billing service using Protocol Buffers, and Kafka-based event streaming for asynchronous patient lifecycle events to analytics and billing services.}
+            \ProjectItem{Implemented an API Gateway as the single entry point with JWT authentication and Spring Security for user registration/login, route filters, and centralized exception handling across patient, auth, and analytics microservices.}
+            \ProjectItem{Provisioned AWS infrastructure with CloudFormation (VPC, RDS, MSK, ECS), containerized microservices with Docker, and validated deployments using LocalStack and integration tests.}
+        \projectItemListEnd
+        \vspace{4.5pt}
+        \projectSubheading
+          {Court Booking System}
+          {https://github.com/Parwez0786}
+          {/Parwez0786}
+          {2023 – 2024}
+          {React.js, MongoDB, JavaScript, Node.js, Express}
+        \vspace{-5pt}
+        \projectItemListStart
+          \ProjectItem{Developed a full-stack sports court booking system using React, Node.js, and MongoDB, allowing users to book courts for various sports at multiple centers with real-time availability validation and automatic time conflict handling.}
+          \ProjectItem{Implemented secure user authentication with JWT and created RESTful APIs for managing user data, sports centers, courts, and booking functionalities, ensuring seamless interaction between the frontend and backend.}
+        \projectItemListEnd
+        \vspace{3.5pt}
+        
+    \resumeSubHeadingListEnd

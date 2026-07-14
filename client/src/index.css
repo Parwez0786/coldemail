@@ -1,0 +1,274 @@
+@import './styles/theme.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-ui-app text-ui-fg antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900 dark:bg-brand-700/60 dark:text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ui-border;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ui-fg-subtle/40;
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-lg border border-ui-border bg-ui-panel px-3.5 py-2.5 text-sm
+           text-ui-fg placeholder:text-ui-fg-muted shadow-inner-soft
+           transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100
+           disabled:cursor-not-allowed disabled:bg-ui-inset disabled:text-ui-fg-subtle
+           dark:focus:border-brand-400 dark:focus:ring-brand-900/40;
+  }
+  .input-mono {
+    @apply input font-mono text-[13px] leading-relaxed;
+  }
+
+  .label {
+    @apply mb-1.5 block text-2xs font-semibold uppercase tracking-[0.08em] text-ui-fg-muted;
+  }
+
+  .hint {
+    @apply text-xs text-ui-fg-muted;
+  }
+
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-medium
+           transition active:scale-[0.98]
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-100
+           disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100
+           dark:focus-visible:ring-brand-900/40;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-sm
+           hover:bg-brand-700 hover:shadow-md
+           focus-visible:ring-brand-200
+           dark:bg-brand-500 dark:hover:bg-brand-400;
+  }
+
+  .btn-gradient {
+    @apply btn-primary;
+  }
+
+  .surface-brand {
+    @apply border border-brand-200/40 bg-brand-50/50
+           dark:border-brand-500/15 dark:bg-brand-500/10;
+  }
+
+  .callout-warning {
+    @apply rounded-lg border border-amber-200/80 bg-amber-50/80 px-3 py-2 text-xs text-amber-900
+           dark:border-amber-700/35 dark:bg-amber-500/10 dark:text-amber-100/90;
+  }
+
+  .panel-mode {
+    @apply rounded-xl border border-ui-border/80 bg-ui-panel-muted/60 p-4
+           ring-1 ring-inset ring-ui-border/50;
+  }
+  .panel-mode-rose {
+    @apply border-l-[3px] border-l-rose-400/75 dark:border-l-rose-500/40;
+  }
+  .panel-mode-emerald {
+    @apply border-l-[3px] border-l-emerald-500/70 dark:border-l-emerald-500/40;
+  }
+  .panel-mode-sky {
+    @apply border-l-[3px] border-l-sky-500/70 dark:border-l-sky-500/40;
+  }
+
+  .icon-brand {
+    @apply bg-brand-600 text-white dark:bg-brand-600/85;
+  }
+
+  .icon-brand-muted {
+    @apply bg-brand-100/90 text-brand-600 dark:bg-brand-500/15 dark:text-brand-300;
+  }
+
+  .btn-secondary {
+    @apply btn bg-ui-panel text-ui-fg ring-1 ring-inset ring-ui-border shadow-sm
+           hover:bg-ui-panel-muted hover:ring-ui-fg-subtle/30
+           focus-visible:ring-brand-200;
+  }
+
+  .btn-ghost {
+    @apply btn text-ui-fg-subtle hover:bg-ui-inset hover:text-ui-fg
+           focus-visible:ring-ui-border
+           dark:ring-1 dark:ring-inset dark:ring-ui-border/80;
+  }
+
+  .btn-danger {
+    @apply btn bg-rose-600 text-white shadow-sm
+           hover:bg-rose-700
+           focus-visible:ring-rose-200
+           dark:bg-rose-500 dark:hover:bg-rose-400;
+  }
+
+  .btn-xs {
+    @apply px-2.5 py-1 text-xs;
+  }
+
+  .btn-sm {
+    @apply min-h-[2rem] px-3.5 py-1.5 text-xs;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ui-border/80 bg-ui-panel shadow-soft;
+  }
+
+  .surface {
+    @apply rounded-xl border border-ui-border/80 bg-ui-panel;
+  }
+
+  .divider {
+    @apply h-px w-full bg-ui-border/70;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-2xs font-medium;
+  }
+
+  .pill-brand {
+    @apply pill bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100
+           dark:bg-brand-900/40 dark:text-brand-200 dark:ring-brand-800/50;
+  }
+  .pill-emerald {
+    @apply pill bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200/70
+           dark:bg-emerald-900/30 dark:text-emerald-200 dark:ring-emerald-800/40;
+  }
+  .pill-rose {
+    @apply pill bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-200/70
+           dark:bg-rose-900/30 dark:text-rose-200 dark:ring-rose-800/40;
+  }
+  .pill-amber {
+    @apply pill bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200/70
+           dark:bg-amber-900/30 dark:text-amber-200 dark:ring-amber-800/40;
+  }
+  .pill-ink {
+    @apply pill bg-ui-inset text-ui-fg-subtle ring-1 ring-inset ring-ui-border;
+  }
+
+  .status-dot {
+    @apply inline-block h-1.5 w-1.5 rounded-full;
+  }
+
+  .tabs {
+    @apply inline-flex flex-nowrap items-center gap-2 rounded-xl bg-ui-inset/80 p-2
+           ring-1 ring-inset ring-ui-border/60;
+  }
+  /*
+   * Tabs: paint hover/active/focus on ::before so the button box never resizes.
+   */
+  .tab {
+    @apply relative isolate shrink-0 rounded-lg border-0 bg-transparent px-4 py-2
+           text-sm font-medium leading-none text-ui-fg-subtle shadow-none outline-none
+           ring-0 transition-colors duration-150
+           hover:text-ui-fg
+           focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0;
+  }
+  .tab::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 -z-10 rounded-[inherit]
+           shadow-[inset_0_0_0_1px_transparent]
+           transition-[background-color,box-shadow] duration-150;
+  }
+  .tab:hover::before {
+    @apply bg-ui-panel/50;
+  }
+  .tabs.text-xs .tab {
+    @apply px-4 py-2;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  .tab-active {
+    @apply text-ui-fg;
+  }
+  .tab-active::before {
+    @apply bg-ui-panel shadow-[inset_0_0_0_1px_rgb(var(--cm-border)/0.85)];
+  }
+  .tab-active-rose {
+    @apply text-rose-700 dark:text-rose-200;
+  }
+  .tab-active-rose::before {
+    @apply bg-rose-50/90 shadow-[inset_0_0_0_1px_rgb(251_207_232/0.85)]
+           dark:bg-rose-500/12 dark:shadow-[inset_0_0_0_1px_rgb(244_63_94/0.25)];
+  }
+  .tab-active-emerald {
+    @apply text-emerald-700 dark:text-emerald-200;
+  }
+  .tab-active-emerald::before {
+    @apply bg-emerald-50/90 shadow-[inset_0_0_0_1px_rgb(167_243_208/0.85)]
+           dark:bg-emerald-500/12 dark:shadow-[inset_0_0_0_1px_rgb(16_185_129/0.25)];
+  }
+  .tab-active-sky {
+    @apply text-sky-700 dark:text-sky-200;
+  }
+  .tab-active-sky::before {
+    @apply bg-sky-50/90 shadow-[inset_0_0_0_1px_rgb(186_230_253/0.85)]
+           dark:bg-sky-500/12 dark:shadow-[inset_0_0_0_1px_rgb(14_165_233/0.25)];
+  }
+  /* Equal-width segments so switching active tab never reflows siblings */
+  .tabs-2 {
+    @apply grid grid-cols-2 gap-1 p-1.5;
+  }
+  .tabs-2 .tab {
+    @apply flex w-full items-center justify-center text-center;
+  }
+  .tabs-3 {
+    @apply grid grid-cols-3 gap-1 p-1.5;
+  }
+  .tabs-3 .tab {
+    @apply flex w-full items-center justify-center text-center;
+  }
+  .tabs-scroll {
+    @apply max-w-full overflow-x-auto;
+    scrollbar-width: none;
+  }
+  .tabs-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Email body preview — always paper white */
+  .preview-frame {
+    @apply bg-ui-preview shadow-sm ring-1 ring-inset ring-ui-border/60
+           dark:shadow-none dark:ring-ui-border/80;
+  }
+
+  .preview-pane {
+    @apply bg-ui-inset/35 dark:bg-ui-inset/55;
+  }
+
+  .anim-in {
+    @apply animate-fade-in-up;
+  }
+}
+
+@layer utilities {
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
