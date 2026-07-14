@@ -4,6 +4,8 @@ A personal cold-mail workbench. Compose personalised HTML emails from your own t
 
 Built as a **React + Express monorepo**, persisted in **MongoDB Atlas**, powered by **Gemini and/or Groq**, and deployable to **Render's free tier** in one click.
 
+Maintained by **Md Parwez Ansari** ([@Parwez0786](https://github.com/Parwez0786)).
+
 📖 **[Full project details, architecture diagrams, and API reference → DETAILS.md](./DETAILS.md)**
 
 ---

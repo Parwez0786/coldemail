@@ -40,7 +40,7 @@ const SERVER_ROOT = path.resolve(process.cwd());
 const PROJECT_ROOT = path.resolve(SERVER_ROOT, '..');
 
 function resolveCvRoot(input) {
-  const fallback = process.env.CV_DEFAULT_PATH || './Sk_Sahil_Parvez_CV_';
+  const fallback = process.env.CV_DEFAULT_PATH || './Md_Parwez_Ansari_CV_';
   const raw = (input && String(input).trim()) || fallback;
   const abs = path.isAbsolute(raw) ? raw : path.resolve(PROJECT_ROOT, raw);
   const rel = path.relative(PROJECT_ROOT, abs);
@@ -107,7 +107,7 @@ async function inspectCvFolder(absPath) {
 }
 
 router.get('/status', async (_req, res) => {
-  const defaultCvPath = process.env.CV_DEFAULT_PATH || './Sk_Sahil_Parvez_CV_';
+  const defaultCvPath = process.env.CV_DEFAULT_PATH || './Md_Parwez_Ansari_CV_';
   let cvInfo = null;
   try {
     const abs = resolveCvRoot(defaultCvPath);

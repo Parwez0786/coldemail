@@ -65,16 +65,18 @@ services:
       # draft. Whatever PDF the user picked (library or device upload) is
       # saved into the Gmail draft under this exact name + ".pdf".
       - key: DRAFT_ATTACHMENT_FILENAME
-        value: Sk_Sahil_Parvez_CV
+        value: Md_Parwez_Ansari_CV
+      - key: CV_DEFAULT_PATH
+        value: ./Md_Parwez_Ansari_CV_
       # --- Auth (non-secret) ---
       - key: JWT_ACCESS_TTL
         value: 15m
       - key: JWT_REFRESH_TTL
         value: 30d
       - key: SEED_ADMIN_EMAIL
-        value: sksahilparvez2000@gmail.com
+        value: parwezansari1024@gmail.com
       - key: SEED_ADMIN_NAME
-        value: Sahil
+        value: Md Parwez Ansari
 
       # --- Secrets: set these manually in the Render dashboard ---
       - key: MONGODB_URI

@@ -14,7 +14,7 @@ const OWNED_COLLECTIONS = ['templates', 'sent_log', 'resumes', 'tailor_sessions'
 export async function seedAdmin() {
   const email = (process.env.SEED_ADMIN_EMAIL || '').trim();
   const password = process.env.SEED_ADMIN_PASSWORD || '';
-  const name = (process.env.SEED_ADMIN_NAME || 'Sahil').trim();
+  const name = (process.env.SEED_ADMIN_NAME || 'Md Parwez Ansari').trim();
 
   if (!email || !password) return;
 

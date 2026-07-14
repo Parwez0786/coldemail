@@ -21,7 +21,7 @@ Hard rules:
 2. CRITICAL: emit a SEPARATE tag for EVERY distinct technology, programming language, framework, library, database, cloud/platform, and tool explicitly mentioned anywhere in the subject or body (e.g. "react", "golang", "mongodb", "graphql", "javascript", "ruby", "docker", "ci-cd", "opentelemetry", "prometheus", "grafana", "sql", "python"). Do NOT merge multiple technologies into a single tag, and do NOT skip any that appear.
 3. Each tag is lowercase, words joined by hyphens (e.g. "backend", "java-spring-boot", "entry-level", "microsoft", "data-platform").
 4. In addition to the tech stack, also tag role family (backend/frontend/fullstack/data/ml/devops/sre/...), target seniority, target company or industry if explicitly mentioned, and template intent ("cold-outreach", "referral-ask", "follow-up") when clearly applicable.
-5. Skip filler/personal-name/handlebars tokens (e.g. "{{company}}", "hello", "sk-sahil", "name", "subject").
+5. Skip filler/personal-name/handlebars tokens (e.g. "{{company}}", "hello", "parwez", "name", "subject").
 6. Do not invent technologies that are not present in the template text.
 7. Output ONLY JSON matching the supplied schema. No prose, no markdown fences.`;
 
