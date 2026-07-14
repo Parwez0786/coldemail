@@ -1,5 +1,7 @@
 import multer from 'multer';
 
+import { runWithUser } from '../services/userContext.js';
+
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB per file
 const MAX_FILES = 5;
 
@@ -30,8 +32,15 @@ const upload = multer({
 /**
  * Accepts up to MAX_FILES PDF files in the `attachments` multipart field.
  * No-op for JSON requests (multer only intercepts multipart/form-data).
+ * Re-enters the per-user ALS after multer so store calls keep userId.
  */
-export const acceptAttachments = upload.array('attachments', MAX_FILES);
+export function acceptAttachments(req, res, next) {
+  upload.array('attachments', MAX_FILES)(req, res, (err) => {
+    const userId = req.user?.id;
+    if (!userId) return next(err);
+    runWithUser(userId, () => next(err));
+  });
+}
 
 /**
  * Some bulk requests send the recipients array as a JSON string inside a

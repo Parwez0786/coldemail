@@ -12,6 +12,17 @@ export function runWithUser(userId, fn) {
   return storage.run({ userId }, fn);
 }
 
+/**
+ * Bind userId to the current request's async context for the rest of the
+ * chain. Prefer this in Express middleware over runWithUser(...next): multer
+ * (and other stream/callback middleware) finish outside `storage.run()`'s
+ * callback, which drops the store and makes requireCurrentUserId() throw
+ * "Not authenticated" even though requireAuth already succeeded.
+ */
+export function enterUser(userId) {
+  storage.enterWith({ userId });
+}
+
 export function getCurrentUserId() {
   return storage.getStore()?.userId;
 }

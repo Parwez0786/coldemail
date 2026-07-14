@@ -36,6 +36,7 @@ async function call(method, url, data) {
 }
 
 async function callForm(method, url, formData) {
+  console.log("callForm", method, url, formData);
   try {
     // Let the browser set the multipart boundary automatically.
     const res = await client.request({

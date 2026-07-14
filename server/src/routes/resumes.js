@@ -4,6 +4,16 @@ import multer from 'multer';
 import { HttpError } from '../middleware/error.js';
 import { resumeStore } from '../services/resumeStore.js';
 import { suggestTagsFromPdf, isPdfTaggingEnabled } from '../services/pdfTags.js';
+import { runWithUser } from '../services/userContext.js';
+
+/** Multer finishes in a callback that can drop ALS — re-bind req.user. */
+function withUserUpload(req, res, done) {
+  upload(req, res, (uploadErr) => {
+    const userId = req.user?.id;
+    if (!userId) return done(uploadErr);
+    runWithUser(userId, () => done(uploadErr));
+  });
+}
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
 const MAX_NAME = 200;
@@ -82,7 +92,7 @@ router.post('/suggest-tags', (req, res, next) => {
   if (!isPdfTaggingEnabled()) {
     return next(new HttpError(503, 'AI is disabled. Set GEMINI_API_KEY or GROQ_API_KEY on the server.'));
   }
-  upload(req, res, async (uploadErr) => {
+  withUserUpload(req, res, async (uploadErr) => {
     if (uploadErr) {
       const status =
         uploadErr.code === 'LIMIT_FILE_SIZE'
@@ -109,7 +119,7 @@ router.post('/suggest-tags', (req, res, next) => {
 
 // POST /api/resumes — upload (multipart: field "file" + "name")
 router.post('/', (req, res, next) => {
-  upload(req, res, async (uploadErr) => {
+  withUserUpload(req, res, async (uploadErr) => {
     if (uploadErr) {
       const status =
         uploadErr.code === 'LIMIT_FILE_SIZE'
@@ -129,7 +139,6 @@ router.post('/', (req, res, next) => {
       if (typeof tags === 'string' && tags.trim().startsWith('[')) {
         try { tags = JSON.parse(tags); } catch { /* fall through */ }
       }
-      console.log('tags', tags);
       const meta = await resumeStore.create({
         name,
         filename: req.file.originalname,
@@ -147,7 +156,7 @@ router.post('/', (req, res, next) => {
 
 // PUT /api/resumes/:id/content — replace the stored PDF (same id, name, tags)
 router.put('/:id/content', (req, res, next) => {
-  upload(req, res, async (uploadErr) => {
+  withUserUpload(req, res, async (uploadErr) => {
     if (uploadErr) {
       const status =
         uploadErr.code === 'LIMIT_FILE_SIZE'
